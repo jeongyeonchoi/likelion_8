@@ -1,12 +1,49 @@
-<h1>crud/main.html</h1>
+<!doctype html>
+<html lang="ko">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<a href="{% url 'postcreate' %}">새 글 쓰기</a>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <title>Jeong Yeon's Blog</title>
+  </head>
+  <body>
+    <!-- Search "nav bar" -->
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color:#6c757d;">
+    <a class="navbar-brand text-white" href="#">Jeong Yeon</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
-{% for post in posts.all %}
-    <!-- 제목 누르면 read 페이지로 가도록 구현 -->
-    <h3><a href="{% url 'show' post.id %}">제목 : {{ post.title }}</a></h3> 
-    <h3>내용 : {{ post.summary }}</h3>
-    <h4>작성 날짜 : {{ post.created_at }}</h4>
-    <h4>수정 날짜 : {{ post.updated_at }}</h4>
-    <br/>
-{% endfor %}
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+            <a class="nav-link text-white" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+            <a class="nav-link text-white" href="{% url 'postcreate' %}">글쓰기 </a>
+        </li>
+    </div>
+    </nav>    
+    <br>
+        
+    <h1 align="center">My Blog</h1>
+
+    {% for post in posts.all %}
+        <!-- 제목 누르면 read 페이지로 가도록 구현 -->
+        <h3><a href="{% url 'show' post.id %}">제목 : {{ post.title }}</a></h3> 
+        <h3>내용 : {{ post.summary }}</h3>
+        <h4>작성 날짜 : {{ post.created_at }}</h4>
+        <h4>수정 날짜 : {{ post.updated_at }}</h4>
+        <br/>
+    {% endfor %}
+
+  </body>
+</html>
