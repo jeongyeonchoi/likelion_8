@@ -36,7 +36,10 @@
         
     <h1 align="center">My Blog</h1>
 
+    {% block content %}
     {% for post in posts.all %}
+    <div class="container jumbotron" style="background-color: #e3f2fd;">
+    
         <!-- 제목 누르면 read 페이지로 가도록 구현 -->
         <h3><a href="{% url 'show' post.id %}">제목 : {{ post.title }}</a></h3> 
         <h3>내용 : {{ post.summary }}</h3>
@@ -44,6 +47,7 @@
         <h4>수정 날짜 : {{ post.updated_at }}</h4>
         <br/>
     {% endfor %}
+    {% endblock %}
 
   </body>
 </html>
